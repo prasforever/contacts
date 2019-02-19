@@ -40,7 +40,33 @@ class ContactsList extends Component {
         this.props.userData[key].general.lastName
       }`.toLowerCase();
 
-      if (fullName.includes(this.state.filterString)) {
+      if (
+        fullName.includes(this.state.filterString) ||
+        this.props.userData[key].job.company
+          .toLowerCase()
+          .includes(this.state.filterString) ||
+        this.props.userData[key].job.title
+          .toLowerCase()
+          .includes(this.state.filterString) ||
+        this.props.userData[key].contact.email
+          .toLowerCase()
+          .includes(this.state.filterString) ||
+        this.props.userData[key].contact.phone
+          .toLowerCase()
+          .includes(this.state.filterString) ||
+        this.props.userData[key].address.street
+          .toLowerCase()
+          .includes(this.state.filterString) ||
+        this.props.userData[key].address.city
+          .toLowerCase()
+          .includes(this.state.filterString) ||
+        this.props.userData[key].address.zipCode
+          .toLowerCase()
+          .includes(this.state.filterString) ||
+        this.props.userData[key].address.country
+          .toLowerCase()
+          .includes(this.state.filterString)
+      ) {
         userlist.push(
           <ContactsMiniCard
             key={key}
