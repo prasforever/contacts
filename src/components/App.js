@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { isEmpty } from "lodash";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -15,11 +14,15 @@ import ContactsView from "./contactsView";
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    backgroundColor: "#eeeeee"
+    height: "100vh"
   },
   grow: {
     flexGrow: 1
+  },
+  main: {
+    backgroundColor: "#dddddd",
+    flexGrow: 1,
+    paddingTop: 75
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -41,9 +44,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="root" />
-        <CssBaseline />
-        <AppBar position="static" className={classes.appBar}>
+        <AppBar position="absolute" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" color="inherit" className={classes.grow}>
               Contacts Viewer
@@ -51,15 +52,20 @@ class App extends Component {
             <Button color="inherit">Clear Data</Button>
           </Toolbar>
         </AppBar>
-        <Grid align="center" item xs={10}>
-          {this.renderContent()}
+        <Grid container className={classes.root}>
+          <Grid container justify="center" className={classes.main}>
+            {this.renderContent()}
+          </Grid>
         </Grid>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ loadAction }) => ({ loadAction });
+const mapStateToProps = ({ loadAction, userData }) => ({
+  loadAction,
+  userData
+});
 
 const mapDispatchToProps = dispatch => ({
   loadAction: () => dispatch(loadAction())
