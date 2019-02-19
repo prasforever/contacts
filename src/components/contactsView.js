@@ -9,10 +9,10 @@ class ContactsView extends Component {
   render() {
     return (
       <Grid container spacing={24}>
-        <Grid item xs={4}>
+        <Grid item xs={3} style={{ backgroundColor: "#ffffff" }}>
           <ContactsList />
         </Grid>
-        <Grid item xs={8} align="center">
+        <Grid item xs={9} align="center">
           <ContactDetails />
         </Grid>
       </Grid>
