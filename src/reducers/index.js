@@ -3,7 +3,11 @@ import { combineReducers } from "redux";
 const userDataReducer = (state = {}, action) => {
   switch (action.type) {
     case "LOAD_ACTION":
-      return action.payload;
+      let obj = {};
+      action.payload.forEach((element, index) => {
+        obj[index] = element;
+      });
+      return obj;
     default:
       return state;
   }
