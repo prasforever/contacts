@@ -4,3 +4,10 @@ export const loadAction = data => async dispatch => {
     payload: data
   });
 };
+
+export const userSelectedAction = values => dispatch => {
+  dispatch({
+    type: "SELECTED_ACTION",
+    payload: values
+  });
+};

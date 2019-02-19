@@ -13,6 +13,16 @@ const userDataReducer = (state = {}, action) => {
   }
 };
 
+const userSelectedReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "SELECTED_ACTION":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
-  userData: userDataReducer
+  userData: userDataReducer,
+  userSelected: userSelectedReducer
 });
